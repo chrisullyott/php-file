@@ -1,0 +1,13 @@
+# SYSTEM #
+##########
+.DS_Store
+
+# COMPOSER #
+############
+composer.lock
+composer.phar
+vendor/*
+
+# NATIVE FILES #
+################
+*.sublime-*
