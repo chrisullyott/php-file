@@ -125,7 +125,7 @@ class File
      * @param  integer $length The length of the string
      * @return string
      */
-    public static function randomString($length = 32)
+    private static function randomString($length = 32)
     {
         $string = '';
 
