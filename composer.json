@@ -1,5 +1,6 @@
 {
     "name": "chrisullyott/php-file",
+    "type": "library",
     "description": "A PHP helper for the local filesystem.",
     "homepage": "https://github.com/chrisullyott/php-file",
     "license": "MIT",
