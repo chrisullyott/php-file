@@ -11,11 +11,5 @@ Include in your project, or, install with Composer:
 ```
 "require": {
     "chrisullyott/php-file": "dev-master"
-},
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/chrisullyott/php-file"
-    }
-]
+}
 ```
