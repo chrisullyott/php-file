@@ -28,6 +28,19 @@ class File
     }
 
     /**
+     * Write a string to a file, return boolean for success.
+     *
+     * @param  string  $path     The path to the file
+     * @param  mixed   $contents The contents for the file
+     * @param  integer $flags    Any flags available to file_put_contents()
+     * @return boolean           Whether the file was written
+     */
+    public static function write($path, $contents, $flags)
+    {
+        return file_put_contents($path, $contents, $flags) !== false;
+    }
+
+    /**
      * Create a directory if it doesn't exist.
      *
      * @param  integer $permissions The permissions octal
