@@ -28,6 +28,21 @@ class File
     }
 
     /**
+     * Read a file, return null if unreadable.
+     *
+     * @param  string $path The path to the file
+     * @return mixed
+     */
+    public static function read($path)
+    {
+        if (is_readable($path)) {
+            return file_get_contents($path);
+        }
+
+        return null;
+    }
+
+    /**
      * Write a string to a file, return boolean for success.
      *
      * @param  string  $path     The path to the file
