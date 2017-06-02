@@ -46,7 +46,7 @@ class File
      * @param  integer $permissions The permissions octal
      * @return boolean              Whether the directory exists or was created
      */
-    public static function createDir($path, $permissions = 0777)
+    public static function createDir($path, $permissions = 0755)
     {
         if (!is_dir($path)) {
             return mkdir($path, $permissions, true);
