@@ -56,6 +56,27 @@ class File
     }
 
     /**
+     * Write a string to a file and use locking.
+     *
+     * @param  string  $path     The path to the file
+     * @param  mixed   $contents The contents for the file
+     * @param  string  $mode     The write mode to use
+     * @return boolean           Whether the file is closed
+     */
+    public static function writeWithLock($path, $contents, $mode = 'w')
+    {
+        $handle = fopen($path, $mode);
+
+        if (flock($handle, LOCK_EX)) {
+            fwrite($handle, $contents);
+            fflush($handle);
+            flock($handle, LOCK_UN);
+        }
+
+        return fclose($handle);
+    }
+
+    /**
      * Create a directory if it doesn't exist.
      *
      * @param  integer $permissions The permissions octal
