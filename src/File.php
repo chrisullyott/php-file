@@ -35,7 +35,7 @@ class File
      * @param  integer $flags    Any flags available to file_put_contents()
      * @return boolean           Whether the file was written
      */
-    public static function write($path, $contents, $flags)
+    public static function write($path, $contents, $flags = null)
     {
         return file_put_contents($path, $contents, $flags) !== false;
     }
