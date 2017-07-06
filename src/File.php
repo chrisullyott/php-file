@@ -158,7 +158,7 @@ class File
      * @param  string $dir The directory path
      * @return string
      */
-    public static function availableFilePath($dir)
+    public static function availablePath($dir)
     {
         do {
             $name = self::randomString();
