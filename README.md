@@ -6,7 +6,7 @@ There are many functions I wish I had to manage local files, so I made a library
 
 ### Installation
 
-Include in your project, or, install with Composer:
+With Composer:
 
 ```
 "require": {
