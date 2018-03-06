@@ -169,6 +169,72 @@ class File
     }
 
     /**
+     * Find the next available file path (via sequence number) among those in its
+     * current directory.
+     *
+     * @param  string $path The attempted file path
+     * @return string
+     */
+    public static function sequencedPath($path)
+    {
+        while (file_exists($path)) {
+            $path = self::incrementSequenceNumber($path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * Increment the sequence number of a filename in a path. Example:
+     *
+     * my_file.pdf     => my_file (1).pdf
+     * my_file (1).pdf => my_file (2).pdf
+     *
+     * @param  string $path The file path
+     * @return string
+     */
+    private static function incrementSequenceNumber($path)
+    {
+        $i = pathinfo($path);
+
+        $filename = preg_replace_callback('/\((\d{1,})\)$/', function($m) {
+            return '(' . ($m[1] + 1) . ')';
+        }, $i['filename']);
+
+        if ($filename === $i['filename']) {
+            $filename .= " (1)";
+        }
+
+        return self::updateFilename($path, $filename);
+    }
+
+
+    /**
+     * Update the filename in a path, preserving the extension.
+     *
+     * @param  string $path     The file path
+     * @param  string $filename The new filename (without extension)
+     * @return string
+     */
+    private static function updateFilename($path, $filename)
+    {
+        $p = '';
+        $i = pathinfo($path);
+
+        if (!empty($i['dirname']) && $i['dirname'] !== '.') {
+            $p = $i['dirname'] . DIRECTORY_SEPARATOR;
+        }
+
+        $p .= $filename;
+
+        if (!empty($i['extension'])) {
+            $p .= ".{$i['extension']}";
+        }
+
+        return $p;
+    }
+
+    /**
      * Generate a random string using letters and numbers.
      *
      * @param  integer $length The length of the string
