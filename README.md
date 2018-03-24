@@ -6,10 +6,8 @@ There are many functions I wish I had to manage local files, so I made a library
 
 ### Installation
 
-With Composer:
+With [Composer](https://getcomposer.org/):
 
 ```
-"require": {
-    "chrisullyott/php-file": "dev-master"
-}
+$ composer require chrisullyott/php-file
 ```
